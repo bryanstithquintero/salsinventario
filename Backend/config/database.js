@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const uri = "mongodb+srv://bryanquinterog:apisena2023@clustersena.hnciuy6.mongodb.net/?retryWrites=true&w=majority";
+const uri = process.env.uri;
 
 
 exports.mongoConnect = async () => {
