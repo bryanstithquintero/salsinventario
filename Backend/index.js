@@ -8,6 +8,18 @@ const path = require("path");
 
 const app = express();
 
+//middlewares
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false })); // express.urlencoded ya incluye bodyParser
+app.use(cors());
+
+//routes
+
+app.get("/", (req, res) => {
+    res.send("home page");
+})
+
 //coneccion a la base de datos
 database.mongoConnect();
 
