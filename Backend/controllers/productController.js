@@ -2,13 +2,36 @@ const asyncHandler = require("express-async-handler");
 const Product = require("../models/ProductModel");
 
 const createProduct = asyncHandler(async (req, res) => {
-    const { name, id_p, quantity, price, description, image } = req.body;
+    const { name, id_p, quantity, price, description } = req.body;
 
     //   Validation
-    if (!name || !id_p || !quantity || !price || !description || !image) {
+    if (!name || !quantity || !price || !description || !image) {
         res.status(400);
         throw new Error("Please fill in all fields");
     }
+
+    //image upload
+    let fileData = {};
+    if (req.file) {
+        let uploadedFile;
+        try {
+            uploadedFile = await cloudinary.uploader.upload(req.file.path, {
+                folder: "Pinvent App",
+                resource_type: "image",
+            });
+        } catch (error) {
+            res.status(500);
+            throw new Error("Image could not be uploaded");
+        }
+
+        fileData = {
+            fileName: req.file.originalname,
+            filePath: uploadedFile.secure_url,
+            fileType: req.file.mimetype,
+            fileSize: fileSizeFormatter(req.file.size, 2),
+        }
+    }
+
     const product = await Product.create({
         name,
         id_p,
@@ -47,6 +70,29 @@ const updateProduct = asyncHandler(async (req, res) => {
         res.status(404);
         throw new Error("Product not found");
     }
+
+    let fileData = {};
+    if (req.file) {
+        // Save image to cloudinary
+        let uploadedFile;
+        try {
+            uploadedFile = await cloudinary.uploader.upload(req.file.path, {
+                folder: "Pinvent App",
+                resource_type: "image",
+            });
+        } catch (error) {
+            res.status(500);
+            throw new Error("Image could not be uploaded");
+        }
+
+        fileData = {
+            fileName: req.file.originalname,
+            filePath: uploadedFile.secure_url,
+            fileType: req.file.mimetype,
+            fileSize: fileSizeFormatter(req.file.size, 2),
+        };
+    }
+
     const updatedProduct = await Product.findByIdAndUpdate(
         { _id: id },
         {
