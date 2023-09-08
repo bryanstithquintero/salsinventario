@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home/Home";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Sidebar from "./components/sidebar/Sidebar";
 import Layout from "./components/layout/Layout";
@@ -17,7 +16,6 @@ function App() {
         <BrowserRouter>
             <ToastContainer />
             <Routes>
-                <Route path="/" element={<Home />} />
 
                 <Route
                     path="/dashboard"

@@ -15,7 +15,10 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false })); // express.urlencoded ya incluye bodyParser
 app.use(cookieParser());
-app.use(cors());
+app.use(cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+}));
 
 app.use("/api/products", productRoute);
 
