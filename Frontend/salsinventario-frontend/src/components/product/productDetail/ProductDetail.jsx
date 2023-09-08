@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getProduct } from "../../../redux/features/product/productSlice";
+import { findProduct } from "../../../redux/features/product/productSlice";
 import Card from "../../card/Card";
 import { SpinnerImg } from "../../loader/Loader";
 import "./ProductDetail.scss";
@@ -23,7 +23,7 @@ const ProductDetail = () => {
     };
 
     useEffect(() => {
-        dispatch(getProduct(id));
+        dispatch(findProduct(id));
     }, [isError, message, dispatch]);
 
     return (

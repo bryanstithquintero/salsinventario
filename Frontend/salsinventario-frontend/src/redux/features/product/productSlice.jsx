@@ -73,7 +73,7 @@ export const deleteProduct = createAsyncThunk(
 
 // Get a product
 export const findProduct = createAsyncThunk(
-    "products/getProduct",
+    "products/findProduct",
     async (id, thunkAPI) => {
         try {
             return await productService.findProduct(id);
