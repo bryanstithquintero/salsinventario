@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import AddProduct from "./pages/addProduct/AddProduct";
 import ProductDetail from "./components/product/productDetail/ProductDetail";
 import EditProduct from "./pages/editProduct/EditProduct";
+import Home from "./pages/home/Home";
 
 axios.defaults.withCredentials = true;
 
@@ -16,6 +17,7 @@ function App() {
         <BrowserRouter>
             <ToastContainer />
             <Routes>
+                <Route path="/" element={<Home />} />
 
                 <Route
                     path="/dashboard"
