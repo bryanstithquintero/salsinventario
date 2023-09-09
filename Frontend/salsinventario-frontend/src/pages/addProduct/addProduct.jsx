@@ -33,8 +33,8 @@ const AddProduct = () => {
     };
 
     const handleImageChange = (e) => {
-        setProductImage(e.target.files[0]);
-        setImagePreview(URL.createObjectURL(e.target.files[0]));
+        setProductImage(e.target.files[0]); // Actualiza el estado con la imagen seleccionada
+        setImagePreview(URL.createObjectURL(e.target.files[0])); // Actualiza la vista previa de la imagen si es necesario
     };
 
     const generateKSKU = (category) => {
@@ -65,7 +65,7 @@ const AddProduct = () => {
     return (
         <div>
             {isLoading && <Loader />}
-            <h3 className="--mt">Add New Product</h3>
+            <h3 className="--mt">Agrega nuevo producto</h3>
             <ProductForm
                 product={product}
                 productImage={productImage}

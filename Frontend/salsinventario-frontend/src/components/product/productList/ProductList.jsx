@@ -74,6 +74,7 @@ const ProductList = ({ products, isLoading }) => {
     };
     //   End Pagination
 
+
     useEffect(() => {
         dispatch(FILTER_PRODUCTS({ products, search }));
     }, [products, search, dispatch]);

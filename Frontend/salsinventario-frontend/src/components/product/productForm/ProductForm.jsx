@@ -28,6 +28,7 @@ const ProductForm = ({
                             type="file"
                             name="image"
                             onChange={(e) => handleImageChange(e)}
+                            value=""
                         />
 
                         {imagePreview != null ? (
