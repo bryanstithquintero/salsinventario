@@ -17,9 +17,9 @@ const ProductDetail = () => {
 
     const stockStatus = (quantity) => {
         if (quantity > 0) {
-            return <span className="--color-success">In Stock</span>;
+            return <span className="--color-success">En Stock</span>;
         }
-        return <span className="--color-danger">Out Of Stock</span>;
+        return <span className="--color-danger">Fuera de Stock</span>;
     };
 
     useEffect(() => {
@@ -28,7 +28,7 @@ const ProductDetail = () => {
 
     return (
         <div className="product-detail">
-            <h3 className="--mt">Product Detail</h3>
+            <h3 className="--mt">Detalle del producto</h3>
             <Card cardClass="card">
                 {isLoading && <SpinnerImg />}
                 {product && (
@@ -40,29 +40,29 @@ const ProductDetail = () => {
                                     alt={product.image.fileName}
                                 />
                             ) : (
-                                <p>No image set for this product</p>
+                                <p>Sin imagen para este producto</p>
                             )}
                         </Card>
                         <h4>Product Availability: {stockStatus(product.quantity)}</h4>
                         <hr />
                         <h4>
-                            <span className="badge">Name: </span> &nbsp; {product.name}
+                            <span className="badge">Nombre: </span> &nbsp; {product.name}
                         </h4>
                         <p>
                             <b>&rarr; SKU : </b> {product.sku}
                         </p>
                         <p>
-                            <b>&rarr; Category : </b> {product.category}
+                            <b>&rarr; Categoria : </b> {product.category}
                         </p>
                         <p>
-                            <b>&rarr; Price : </b> {"$"}
+                            <b>&rarr; Precio : </b> {"$"}
                             {product.price}
                         </p>
                         <p>
-                            <b>&rarr; Quantity in stock : </b> {product.quantity}
+                            <b>&rarr; Cantidad en stock : </b> {product.quantity}
                         </p>
                         <p>
-                            <b>&rarr; Total Value in stock : </b> {"$"}
+                            <b>&rarr; Total en avaluo : </b> {"$"}
                             {product.price * product.quantity}
                         </p>
                         <hr />

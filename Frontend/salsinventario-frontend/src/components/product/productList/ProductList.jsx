@@ -84,7 +84,7 @@ const ProductList = ({ products, isLoading }) => {
             <div className="table">
                 <div className="--flex-between --flex-dir-column">
                     <span>
-                        <h3>Inventory Items</h3>
+                        <h3>Inventario</h3>
                     </span>
                     <span>
                         <Search
@@ -98,18 +98,18 @@ const ProductList = ({ products, isLoading }) => {
 
                 <div className="table">
                     {!isLoading && products.length === 0 ? (
-                        <p>-- No product found, please add a product...</p>
+                        <p>-- sin productos, agrega productos...</p>
                     ) : (
                         <table>
                             <thead>
                                 <tr>
                                     <th>s/n</th>
-                                    <th>Name</th>
-                                    <th>Category</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Value</th>
-                                    <th>Action</th>
+                                    <th>Nombre</th>
+                                    <th>Categoria</th>
+                                    <th>Precio</th>
+                                    <th>Cantidad</th>
+                                    <th>Valor</th>
+                                    <th>Accion</th>
                                 </tr>
                             </thead>
 

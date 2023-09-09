@@ -8,26 +8,26 @@ const menu = [
         path: "/dashboard",
     },
     {
-        title: "Add Product",
+        title: "Anadir Producto",
         icon: <BiImageAdd />,
         path: "/add-product",
     },
     {
-        title: "Account",
+        title: "Cuenta",
         icon: <FaRegChartBar />,
         childrens: [
             {
-                title: "Profile",
+                title: "Perfil",
                 path: "/profile",
             },
             {
-                title: "Edit Profile",
+                title: "Editar perfil",
                 path: "/edit-profile",
             },
         ],
     },
     {
-        title: "Report Bug",
+        title: "Reporte de Bug",
         icon: <FaCommentAlt />,
         path: "/contact-us",
     },
