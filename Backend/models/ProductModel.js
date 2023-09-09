@@ -7,10 +7,15 @@ const productSchema = mongoose.Schema(
             required: [true, "Please add a name"],
             trim: true,
         },
-        id_p: {
+        sku: {
             type: String,
             required: true,
-            default: "ID_P",
+            default: "SKU",
+            trim: true,
+        },
+        category: {
+            type: String,
+            required: [true, "Please add a category"],
             trim: true,
         },
         quantity: {

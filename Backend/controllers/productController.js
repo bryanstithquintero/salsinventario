@@ -1,11 +1,13 @@
 const asyncHandler = require("express-async-handler");
 const Product = require("../models/ProductModel");
+const { fileSizeFormatter } = require("../utils/fileUpload");
+const cloudinary = require("cloudinary").v2;
 
 const createProduct = asyncHandler(async (req, res) => {
-    const { name, id_p, quantity, price, description } = req.body;
+    const { name, sku, category, quantity, price, description } = req.body;
 
     //   Validation
-    if (!name || !quantity || !price || !description || !image) {
+    if (!name || !quantity || !price || !description || !sku || !category) {
         res.status(400);
         throw new Error("Please fill in all fields");
     }
@@ -32,6 +34,7 @@ const createProduct = asyncHandler(async (req, res) => {
         }
     }
 
+    //create product
     const product = await Product.create({
         name,
         id_p,
@@ -44,11 +47,13 @@ const createProduct = asyncHandler(async (req, res) => {
     res.status(201).json(product);
 });
 
-const getProducts = asyncHandler(async (req, res) => {
+//getall
+const getProducts = asyncHandler(async (res) => {
     const products = await Product.find().sort("-createdAt");
     res.status(200).json(products);
 });
 
+//getbyid
 const findProduct = asyncHandler(async (req, res) => {
     const product = await Product.findById(req.params.id);
     // if product doesnt exist
@@ -59,8 +64,9 @@ const findProduct = asyncHandler(async (req, res) => {
     res.status(200).json(product);
 });
 
+//update
 const updateProduct = asyncHandler(async (req, res) => {
-    const { name, id_p, quantity, price, description, image } = req.body;
+    const { name, category, quantity, price, description } = req.body;
     const { id } = req.params;
 
     const product = await Product.findById(id);
@@ -96,7 +102,12 @@ const updateProduct = asyncHandler(async (req, res) => {
     const updatedProduct = await Product.findByIdAndUpdate(
         { _id: id },
         {
-            name, id_p, quantity, price, description, image
+            nameame,
+            category,
+            quantity,
+            price,
+            description,
+            image: Object.keys(fileData).length === 0 ? product?.image : fileData,
         },
         {
             new: true,
