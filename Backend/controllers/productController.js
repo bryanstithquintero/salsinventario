@@ -37,18 +37,19 @@ const createProduct = asyncHandler(async (req, res) => {
     //create product
     const product = await Product.create({
         name,
-        id_p,
+        sku,
+        category,
         quantity,
         price,
         description,
-        image
+        fileData
     });
 
     res.status(201).json(product);
 });
 
 //getall
-const getProducts = asyncHandler(async (res) => {
+const getProducts = asyncHandler(async (req, res) => {
     const products = await Product.find().sort("-createdAt");
     res.status(200).json(products);
 });
@@ -102,7 +103,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     const updatedProduct = await Product.findByIdAndUpdate(
         { _id: id },
         {
-            nameame,
+            name,
             category,
             quantity,
             price,
