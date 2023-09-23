@@ -18,7 +18,7 @@ const createProduct = asyncHandler(async (req, res) => {
         let uploadedFile;
         try {
             uploadedFile = await cloudinary.uploader.upload(req.file.path, {
-                folder: "Pinvent App",
+                folder: "Salsinventario",
                 resource_type: "image",
             });
         } catch (error) {
@@ -42,7 +42,7 @@ const createProduct = asyncHandler(async (req, res) => {
         quantity,
         price,
         description,
-        fileData
+        image: fileData,
     });
 
     res.status(201).json(product);
@@ -84,7 +84,7 @@ const updateProduct = asyncHandler(async (req, res) => {
         let uploadedFile;
         try {
             uploadedFile = await cloudinary.uploader.upload(req.file.path, {
-                folder: "Pinvent App",
+                folder: "Salsinventario",
                 resource_type: "image",
             });
         } catch (error) {
