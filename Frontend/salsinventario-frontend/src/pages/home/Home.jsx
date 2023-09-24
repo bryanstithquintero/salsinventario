@@ -1,5 +1,5 @@
 import React from "react";
-import { RiProductHuntLine } from "react-icons/ri";
+import { RiMarkdownLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import "./Home.scss";
 
@@ -8,7 +8,7 @@ const Home = () => {
         <div className="home">
             <nav className="container --flex-between ">
                 <div className="logo">
-                    <RiProductHuntLine size={35} />
+                    <RiMarkdownLine size={45} />
                 </div>
 
                 <ul className="home-links">
