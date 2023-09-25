@@ -6,6 +6,7 @@ const cors = require("cors");
 const database = require("./config/database");
 const path = require("path");
 const productRoute = require("./routes/productRoute");
+const provideRoute = require("./routes/providerRoute");
 const cookieParser = require("cookie-parser");
 
 const app = express();
@@ -24,6 +25,7 @@ app.use(cors({
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 app.use("/api/products", productRoute);
+app.use("/api/providers", provideRoute);
 
 //routes
 
