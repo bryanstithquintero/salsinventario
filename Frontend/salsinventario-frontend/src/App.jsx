@@ -9,6 +9,11 @@ import AddProduct from "./pages/addProduct/AddProduct";
 import ProductDetail from "./components/product/productDetail/ProductDetail";
 import EditProduct from "./pages/editProduct/EditProduct";
 import Home from "./pages/home/Home";
+import Provider from "./pages/providers/Providers";
+import ProviderDetail from "./components/provider/providerDetail/ProviderDetail";
+import EditProvider from "./pages/editProvider/EditProvider";
+import AddProvider from "./pages/addProvider/AddProvider";
+
 
 axios.defaults.withCredentials = true;
 
@@ -40,6 +45,16 @@ function App() {
                     }
                 />
                 <Route
+                    path="/add-provider"
+                    element={
+                        <Sidebar>
+                            <Layout>
+                                <AddProvider />
+                            </Layout>
+                        </Sidebar>
+                    }
+                />
+                <Route
                     path="/product-detail/:id"
                     element={
                         <Sidebar>
@@ -50,11 +65,41 @@ function App() {
                     }
                 />
                 <Route
+                    path="/provider-detail/:id"
+                    element={
+                        <Sidebar>
+                            <Layout>
+                                <ProviderDetail />
+                            </Layout>
+                        </Sidebar>
+                    }
+                />
+                <Route
                     path="/edit-product/:id"
                     element={
                         <Sidebar>
                             <Layout>
                                 <EditProduct />
+                            </Layout>
+                        </Sidebar>
+                    }
+                />
+                <Route
+                    path="/edit-provider/:id"
+                    element={
+                        <Sidebar>
+                            <Layout>
+                                <EditProvider />
+                            </Layout>
+                        </Sidebar>
+                    }
+                />
+                <Route
+                    path="/providers"
+                    element={
+                        <Sidebar>
+                            <Layout>
+                                <Provider />
                             </Layout>
                         </Sidebar>
                     }

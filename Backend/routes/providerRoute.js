@@ -19,7 +19,7 @@ router.get('/', getAllProviders);
 router.get('/:id', getProviderById);
 
 // Ruta para actualizar un proveedor por su ID
-router.put('/:id', updateProvider);
+router.patch('/:id', updateProvider);
 
 // Ruta para eliminar un proveedor por su ID
 router.delete('/:id', deleteProvider);
