@@ -14,6 +14,11 @@ const menu = [
         path: "/add-product",
     },
     {
+        title: "Proveedores",
+        icon: <RiUserReceivedLine />,
+        path: "/providers",
+    },
+    {
         title: "Cuenta",
         icon: <FaRegChartBar />,
         childrens: [
@@ -31,12 +36,8 @@ const menu = [
         title: "Reporte de Bug",
         icon: <FaCommentAlt />,
         path: "/contact-us",
-    },
-    {
-        title: "Proveedores",
-        icon: <RiUserReceivedLine />,
-        path: "/providers",
-    },
+    }
+
 ];
 
 export default menu;

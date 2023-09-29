@@ -1,5 +1,6 @@
-const AsyncHandler = require("express-async-handler")
-const Client = require("../models/ClientModel")
+const AsyncHandler = require("express-async-handler");
+const Client = require("../models/ClientModel");
+const Sales = require("../models/SaleModel");
 
 //crear el cliente
 const createClient = AsyncHandler(async (req, res) => {
@@ -58,10 +59,21 @@ const deleteClient = AsyncHandler(async (req, res) => {
     res.status(200).json(deletedClient)
 });
 
+//obtener las ventas de un cliente
+const findClientWithSales = AsyncHandler(async (req, res) => {
+    const client = await Client.findById(req.params.id)
+    if (!client) {
+        return res.status(404).json({ error: "Cliente no encontrado" })
+    }
+    const sales = await Sales.find({ client: client._id })
+    res.status(200).json({ client, sales: sales });
+});
+
 module.exports = {
     createClient,
     getClients,
     findClient,
     updateClient,
-    deleteClient
+    deleteClient,
+    findClientWithSales
 };

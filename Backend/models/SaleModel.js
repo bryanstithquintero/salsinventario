@@ -2,13 +2,13 @@ const mongoose = require('mongoose');
 
 const saleSchema = mongoose.Schema(
     {
-        productos: [
+        products: [
             {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: 'product',
             },
         ],
-        cliente: {
+        client: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'client',
         },
