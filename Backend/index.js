@@ -7,6 +7,8 @@ const database = require("./config/database");
 const path = require("path");
 const productRoute = require("./routes/productRoute");
 const provideRoute = require("./routes/providerRoute");
+const clientRoute = require("./routes/clientRoute");
+const saleRoute = require("./routes/saleRoute");
 const cookieParser = require("cookie-parser");
 
 const app = express();
@@ -26,6 +28,8 @@ app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 app.use("/api/products", productRoute);
 app.use("/api/providers", provideRoute);
+app.use("/api/clients", clientRoute);
+app.use("/api/sales", saleRoute);
 
 //routes
 
