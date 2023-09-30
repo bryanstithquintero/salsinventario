@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { SpinnerImg } from "../../loader/Loader";
-import "./ProviderList.scss";
+import "./ClientList.scss"; // Asegúrate de importar el archivo SCSS adecuado
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { AiOutlineEye } from "react-icons/ai";
 import Search from "../../search/Search";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import { Link } from "react-router-dom";
-import providerService from "../../../redux/features/provider/providerService";
+import clientService from "../../../redux/features/client/clientService"; // Importa el servicio de clientes
 
-const ProviderList = ({ providers }) => {
+const ClientList = ({ clients }) => {
     const [search, setSearch] = useState("");
-    const [filteredProviders, setFilteredProviders] = useState([]);
+    const [filteredClients, setFilteredClients] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     const shortenText = (text, n) => {
@@ -22,28 +22,28 @@ const ProviderList = ({ providers }) => {
         return text;
     };
 
-    const delProvider = async (id) => {
+    const delClient = async (id) => {
         console.log(id);
-        // Implement your delete logic here
+        // Implementa tu lógica de eliminación aquí
 
         try {
-            await providerService.deleteProvider(id); // Utiliza la función de eliminación del servicio
-            // Luego puedes actualizar la lista de proveedores llamando nuevamente a la función getProviders
-            const updatedProviders = await providerService.getProviders();
-            setFilteredProviders(updatedProviders);
+            await clientService.deleteClient(id); // Utiliza la función de eliminación del servicio de clientes
+            // Luego puedes actualizar la lista de clientes llamando nuevamente a la función getClientList
+            const updatedClients = await clientService.getClients();
+            setFilteredClients(updatedClients);
         } catch (error) {
-            console.error("Error al eliminar el proveedor: ", error);
+            console.error("Error al eliminar el cliente: ", error);
         }
     };
 
     const confirmDelete = (id) => {
         confirmAlert({
-            title: "Delete Provider",
-            message: "Are you sure you want to delete this provider?",
+            title: "Eliminar Cliente",
+            message: "¿Estás seguro de que quieres eliminar este cliente?",
             buttons: [
                 {
-                    label: "Delete",
-                    onClick: () => delProvider(id),
+                    label: "Eliminar",
+                    onClick: () => delClient(id),
                 },
                 {
                     label: "Cancelar",
@@ -53,21 +53,21 @@ const ProviderList = ({ providers }) => {
     };
 
     useEffect(() => {
-        // Filter the providers based on the search input
-        const filtered = providers.filter((provider) =>
-            provider.nombre.toLowerCase().includes(search.toLowerCase())
+        // Filtra los clientes en función de la entrada de búsqueda
+        const filtered = clients.filter((client) =>
+            client.nombre.toLowerCase().includes(search.toLowerCase())
         );
-        setFilteredProviders(filtered);
+        setFilteredClients(filtered);
         setIsLoading(false);
-    }, [providers, search]);
+    }, [clients, search]);
 
     return (
-        <div className="provider-list">
+        <div className="client-list">
             <hr />
             <div className="table">
                 <div className="--flex-between --flex-dir-column">
                     <span>
-                        <h3>Proveedores</h3>
+                        <h3>Clientes</h3>
                     </span>
                     <span>
                         <Search value={search} onChange={(e) => setSearch(e.target.value)} />
@@ -77,8 +77,8 @@ const ProviderList = ({ providers }) => {
                 {isLoading && <SpinnerImg />}
 
                 <div className="table">
-                    {!isLoading && filteredProviders.length === 0 ? (
-                        <p>-- Sin proveedores, agrega proveedores...</p>
+                    {!isLoading && filteredClients.length === 0 ? (
+                        <p>-- Sin clientes, agrega clientes...</p>
                     ) : (
                         <table>
                             <thead>
@@ -87,27 +87,29 @@ const ProviderList = ({ providers }) => {
                                     <th>Nombre</th>
                                     <th>Dirección</th>
                                     <th>Teléfono</th>
+                                    <th>Cartera</th>
                                     <th>Acción</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                {filteredProviders.map((provider, index) => {
-                                    const { _id, nombre, direccion, telefono } = provider;
+                                {filteredClients.map((client, index) => {
+                                    const { _id, nombre, direccion, telefono, cartera } = client;
                                     return (
                                         <tr key={_id}>
                                             <td>{index + 1}</td>
                                             <td>{shortenText(nombre, 16)}</td>
                                             <td>{shortenText(direccion, 16)}</td>
                                             <td>{telefono}</td>
+                                            <td>{cartera}</td>
                                             <td className="icons">
                                                 <span>
-                                                    <Link to={`/provider-detail/${_id}`}>
+                                                    <Link to={`/client-detail/${_id}`}>
                                                         <AiOutlineEye size={25} color={"purple"} />
                                                     </Link>
                                                 </span>
                                                 <span>
-                                                    <Link to={`/edit-provider/${_id}`}>
+                                                    <Link to={`/edit-client/${_id}`}>
                                                         <FaEdit size={20} color={"green"} />
                                                     </Link>
                                                 </span>
@@ -131,4 +133,4 @@ const ProviderList = ({ providers }) => {
     );
 };
 
-export default ProviderList;
+export default ClientList;

@@ -43,7 +43,7 @@ const ProductDetail = () => {
                                 <p>Sin imagen para este producto</p>
                             )}
                         </Card>
-                        <h4>Product Availability: {stockStatus(product.quantity)}</h4>
+                        <h4>Disponibilidad: {stockStatus(product.quantity)}</h4>
                         <hr />
                         <h4>
                             <span className="badge">Nombre: </span> &nbsp; {product.name}

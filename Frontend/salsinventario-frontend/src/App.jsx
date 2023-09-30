@@ -13,6 +13,10 @@ import Provider from "./pages/providers/Providers";
 import ProviderDetail from "./components/provider/providerDetail/ProviderDetail";
 import EditProvider from "./pages/editProvider/EditProvider";
 import AddProvider from "./pages/addProvider/AddProvider";
+import Client from "./pages/clients/Clients";
+import AddClient from "./pages/addClient/AddClient";
+import EditClient from "./pages/editClient/EditClient";
+import ClientDetail from "./components/client/clientDetail/ClientDetail";
 
 
 axios.defaults.withCredentials = true;
@@ -50,6 +54,46 @@ function App() {
                         <Sidebar>
                             <Layout>
                                 <AddProvider />
+                            </Layout>
+                        </Sidebar>
+                    }
+                />
+                <Route
+                    path="/add-client"
+                    element={
+                        <Sidebar>
+                            <Layout>
+                                <AddClient />
+                            </Layout>
+                        </Sidebar>
+                    }
+                />
+                <Route
+                    path="/edit-client/:id"
+                    element={
+                        <Sidebar>
+                            <Layout>
+                                <EditClient />
+                            </Layout>
+                        </Sidebar>
+                    }
+                />
+                <Route
+                    path="/clients"
+                    element={
+                        <Sidebar>
+                            <Layout>
+                                <Client />
+                            </Layout>
+                        </Sidebar>
+                    }
+                />
+                <Route
+                    path="/client-detail/:id"
+                    element={
+                        <Sidebar>
+                            <Layout>
+                                <ClientDetail />
                             </Layout>
                         </Sidebar>
                     }

@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../../components/loader/Loader";
-import ProviderForm from "../../components/provider/providerForm/ProviderForm"; // Asegúrate de importar el formulario adecuado
+import ProviderForm from "../../components/provider/providerForm/ProviderForm";
 import {
-    findProvider, // Asegúrate de importar la acción adecuada
-    updateProvider, // Asegúrate de importar la acción adecuada
+    findProvider,
+    updateProvider,
     selectIsLoading,
     selectProvider,
-} from "../../redux/features/provider/providerSlice"; // Asegúrate de importar el slice de proveedores
+} from "../../redux/features/provider/providerSlice";
 
 const EditProvider = () => {
     const { id } = useParams();
@@ -36,16 +36,15 @@ const EditProvider = () => {
     const saveProvider = async (e) => {
         e.preventDefault();
 
-        // Asegúrate de ajustar los nombres de los campos y los datos que deseas actualizar
         const formData = {
             nombre: provider?.nombre,
             direccion: provider?.direccion,
             telefono: provider?.telefono,
-            // Agrega otros campos que desees actualizar
+
         };
 
         await dispatch(updateProvider({ id, formData }));
-        navigate("/providers"); // Puedes redirigir a la lista de proveedores o a donde desees
+        navigate("/providers");
     };
 
     return (

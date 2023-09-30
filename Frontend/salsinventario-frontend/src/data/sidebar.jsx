@@ -1,6 +1,6 @@
 import { FaTh, FaRegChartBar, FaCommentAlt } from "react-icons/fa";
 import { BiImageAdd } from "react-icons/bi";
-import { RiUserReceivedLine } from "react-icons/ri";
+import { RiUserReceivedLine, RiUserSharedLine } from "react-icons/ri";
 
 const menu = [
     {
@@ -17,6 +17,11 @@ const menu = [
         title: "Proveedores",
         icon: <RiUserReceivedLine />,
         path: "/providers",
+    },
+    {
+        title: "Clientes",
+        icon: <RiUserSharedLine />,
+        path: "/clients",
     },
     {
         title: "Cuenta",
