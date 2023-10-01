@@ -60,7 +60,7 @@ const deleteClient = AsyncHandler(async (req, res) => {
 });
 
 //obtener las ventas de un cliente
-const findClientWithSales = AsyncHandler(async (req, res) => {
+const getSalesFromClient = AsyncHandler(async (req, res) => {
     const client = await Client.findById(req.params.id)
     if (!client) {
         return res.status(404).json({ error: "Cliente no encontrado" })
@@ -75,5 +75,5 @@ module.exports = {
     findClient,
     updateClient,
     deleteClient,
-    findClientWithSales
+    getSalesFromClient
 };

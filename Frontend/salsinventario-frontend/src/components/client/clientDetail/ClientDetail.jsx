@@ -50,7 +50,7 @@ const ClientDetail = () => {
                         </code>
                         <br />
                         <br />
-                        <button className="--align-center --bg-dark"> <Link to={`/edit-client/${client._id}`}> ver compras </Link> </button>
+                        <button className="--align-center --bg-dark"> <Link to={`/client/${client._id}`}> ver compras </Link> </button>
                     </div>
 
                 )}

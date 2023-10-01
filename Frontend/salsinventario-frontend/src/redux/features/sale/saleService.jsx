@@ -34,12 +34,19 @@ const updateSale = async (id, formData) => {
     return response.data;
 };
 
+//get sales from client
+const getSalesFromClient = async (clientId) => {
+    const response = await axios.get(`${API_URL}client/${clientId}`);
+    return response.data;
+};
+
 const saleService = {
     createSale,
     getSales,
     findSale,
     deleteSale,
-    updateSale
+    updateSale,
+    getSalesFromClient
 };
 
 export default saleService;

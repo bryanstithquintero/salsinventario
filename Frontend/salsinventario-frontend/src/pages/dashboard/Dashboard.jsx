@@ -24,7 +24,7 @@ const Dashboard = () => {
         <div>
             <ProductSummary products={products} />
             <ProductList products={products} isLoading={isLoading} />
-            <Link to="/product/create" className="--btn --btn-success">Crear venta +</Link> {/* falta por crear esto */}
+            <Link to="/addSale" className="--btn --btn-success">Crear venta +</Link> {/* falta por crear esto */}
         </div>
     );
 };

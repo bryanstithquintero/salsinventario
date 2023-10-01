@@ -17,6 +17,8 @@ import Client from "./pages/clients/Clients";
 import AddClient from "./pages/addClient/AddClient";
 import EditClient from "./pages/editClient/EditClient";
 import ClientDetail from "./components/client/clientDetail/ClientDetail";
+import SalesClient from "./pages/salesClient/SalesFromClient";
+import AddSale from "./pages/addSale/AddSale";
 
 
 axios.defaults.withCredentials = true;
@@ -144,6 +146,26 @@ function App() {
                         <Sidebar>
                             <Layout>
                                 <Provider />
+                            </Layout>
+                        </Sidebar>
+                    }
+                />
+                <Route
+                    path="/client/:id"
+                    element={
+                        <Sidebar>
+                            <Layout>
+                                <SalesClient />
+                            </Layout>
+                        </Sidebar>
+                    }
+                />
+                <Route
+                    path="/addSale"
+                    element={
+                        <Sidebar>
+                            <Layout>
+                                <AddSale />
                             </Layout>
                         </Sidebar>
                     }

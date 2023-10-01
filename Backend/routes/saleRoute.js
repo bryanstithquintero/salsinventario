@@ -5,7 +5,8 @@ const {
     getSales,
     findSale,
     deleteSale,
-    updateSale
+    updateSale,
+    getSalesFromClient
 } = require('../controllers/saleController');
 
 router.post('/', createSale);
@@ -13,5 +14,7 @@ router.get('/', getSales);
 router.get('/:id', findSale);
 router.patch('/:id', updateSale);
 router.delete('/:id', deleteSale);
+router.get('/client/:id', getSalesFromClient);
+
 
 module.exports = router;

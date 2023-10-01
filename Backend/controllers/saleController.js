@@ -90,10 +90,20 @@ const deleteSale = asyncHandler(async (req, res) => {
     res.status(200).json(deletedSale);
 });
 
+//obtener ventas por cliente
+const getSalesFromClient = asyncHandler(async (req, res) => {
+    const sales = await Sale.find({ client: req.params.id });
+    if (!sales) {
+        return res.status(404).json({ error: "Cliente no encontrado" });
+    }
+    res.status(200).json(sales);
+});
+
 module.exports = {
     createSale,
     getSales,
     findSale,
     updateSale,
     deleteSale,
+    getSalesFromClient,
 };

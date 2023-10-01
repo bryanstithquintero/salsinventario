@@ -107,6 +107,10 @@ export const findSale = createAsyncThunk(
     }
 );
 
+const getSalesFromClient = (sales, clientId) => {
+    return sales.filter((sale) => sale.client._id === clientId);
+};
+
 const saleSlice = createSlice({
     name: "sales",
     initialState,
@@ -201,7 +205,7 @@ const saleSlice = createSlice({
                 state.isError = true;
                 state.message = action.payload;
                 toast.error(action.payload);
-            });
+            })
     }
 });
 
@@ -211,6 +215,8 @@ export const selectTotalSellValue = (state) => state.sales.totalSellValue;
 export const selectSale = (state) => state.sale.sale;
 export const selectSales = (state) => state.sale.sales;
 export const selectIsLoading = (state) => state.sale.isLoading;
+export const selectClients = (state) => state.client.clients;
+export const selectProducts = (state) => state.product.products;
 
 export default saleSlice.reducer;
 
